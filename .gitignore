@@ -1,21 +1,35 @@
-# Compiled Object files
-*.slo
+.deps/
+.libs/
+*.a
+*.app
+*.dll
+*.dylib
+*.exe
+*.la
+*.lai
+*.lib
 *.lo
+*.log
+*.m4
 *.o
 *.obj
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
 *.out
-*.app
+*.slo
+*.so
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache/
+config.*
+configure
+depcomp
+install-sh
+libtool
+ltmain.sh
+missing
+oprofile_data/
+src/grnxx
+stamp-h1
+test/*.trs
+test/darts-test
+test-driver

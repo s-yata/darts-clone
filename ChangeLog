@@ -1,0 +1,5 @@
+2014-03-14  Susumu Yata  <susumu.yata@gmail.com>
+
+  * Copy files from the Subversion repository.
+    The source is http://code.google.com/p/darts-clone/.
+    This commit copies files except sources for tools and tests.
