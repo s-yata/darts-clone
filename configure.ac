@@ -4,7 +4,7 @@
 AC_PREREQ([2.67])
 AC_INIT([darts-clone], [0.32h], [syata@acm.org])
 AC_CONFIG_SRCDIR([include/darts.h])
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([foreign])
 
 # Checks for programs.
 AC_PROG_CXX
