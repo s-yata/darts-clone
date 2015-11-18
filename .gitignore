@@ -27,8 +27,8 @@ install-sh
 libtool
 ltmain.sh
 missing
-oprofile_data/
-src/grnxx
+src/darts
+src/mkdarts
 stamp-h1
 test/*.trs
 test/darts-test
