@@ -1,0 +1,16 @@
+a: found, num = 1 0:1
+aa: found, num = 2 0:1 1:2
+aaa: found, num = 2 0:1 1:2
+ab: found, num = 2 0:1 2:2
+abb: found, num = 2 0:1 2:2
+abc: found, num = 3 0:1 2:2 4:3
+abcd: found, num = 3 0:1 2:2 4:3
+b: found, num = 1 6:1
+ba: found, num = 1 6:1
+bb: found, num = 1 6:1
+c: found, num = 1 7:1
+cd: found, num = 2 7:1 8:2
+cddd: found, num = 2 7:1 8:2
+ccd: found, num = 1 7:1
+ddd: found, num = 1 9:3
+eab: not found
