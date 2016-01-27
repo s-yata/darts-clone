@@ -25,6 +25,7 @@ AM_CXXFLAGS="-Wall -Weffc++ -I\${top_srcdir}/include"
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
+                 include/Makefile
                  src/Makefile
                  test/Makefile])
 AC_OUTPUT

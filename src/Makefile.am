@@ -1,9 +1,10 @@
-bin_PROGRAMS = mkdarts darts
+AM_CXXFLAGS = -Wall -Weffc++ -I$(top_srcdir)/include
+
+bin_PROGRAMS = mkdarts darts darts-benchmark
 
 mkdarts_SOURCES = mkdarts.cc
 darts_SOURCES = darts.cc
-
-include_HEADERS = ${top_srcdir}/include/darts.h
+darts_benchmark_SOURCES = darts-benchmark.cc
 
 EXTRA_HEADERS = \
 	timer.h \
