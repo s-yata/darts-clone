@@ -8,7 +8,7 @@ The interface of Darts-clone is almost the same as that of Darts. In most applic
 
 ## Dictionary Class
 
-`<DoubleArrayImpl>` is the interface of Darts-clone. Note that other classes should not be accessed from outside. `<DoubleArray>` is the typical instance of `<DoubleArrayImpl>`. It uses `<int>` as the type of values and it is suitable for most cases.
+`DoubleArrayImpl` is the interface of Darts-clone. Note that other classes should not be accessed from outside. `DoubleArray` is the typical instance of `DoubleArrayImpl`. It uses `int` as the type of values and it is suitable for most cases.
 
 ```cpp
 namespace Darts {
@@ -86,7 +86,7 @@ Disallows copy and assignment.
 
 ## Template Arguments
 
-`<DoubleArrayImpl>` has 4 template arguments but only the 3rd one is used as the type of values. Note that the given `<T>` is used only from outside, and the internal value type is not changed from `<Darts::Details::value_type>`. In `build()`, given values are casted from `<T>` to `<Darts::Details::value_type>` by using `static_cast`. On the other hand, values are casted from `<Darts::Details::value_type>` to `<T>` in searching dictionaries.
+`DoubleArrayImpl` has 4 template arguments but only the 3rd one is used as the type of values. Note that the given `T` is used only from outside, and the internal value type is not changed from `Darts::Details::value_type`. In `build()`, given values are casted from `T` to `Darts::Details::value_type` by using `static_cast`. On the other hand, values are casted from `Darts::Details::value_type` to `T` in searching dictionaries.
 
 ## Types
 
@@ -101,7 +101,7 @@ void set_result(result_pair_type *result,
                 value_type value, std::size_t length) const;
 ```
 
-`<DoubleArrayImpl>` has 2 kinds of `set_result()`s. The 1st `set_result()` is to set a value to a `<value_type>`. The 2nd `set_result()` is to set a value and a length to a `<result_pair_type>`. By using `set_result()`s, search methods can return the 2 kinds of results in the same way.
+`DoubleArrayImpl` has 2 kinds of `set_result()`s. The 1st `set_result()` is to set a value to a `value_type`. The 2nd `set_result()` is to set a value and a length to a `result_pair_type`. By using `set_result()`s, search methods can return the 2 kinds of results in the same way.
 
 The 1st `set_result()` takes a length as the 3rd argument but it is not used. If a compiler does a good job, codes for getting the length may be removed.
 
@@ -130,7 +130,7 @@ void set_array(const void *ptr,
                std::size_t size = 0);
 ```
 
-`set_array()` calls `clear()` in order to free memory allocated to the old array and then sets a new array. This function is useful to set a memory-mapped array. Note that the array set by `set_array()` is not freed in `clear()` and the destructor of `<DoubleArrayImpl>`.
+`set_array()` calls `clear()` in order to free memory allocated to the old array and then sets a new array. This function is useful to set a memory-mapped array. Note that the array set by `set_array()` is not freed in `clear()` and the destructor of `DoubleArrayImpl`.
 
 `set_array()` can also set the size of the new array but the size is not used in search methods. So it works well even if the 2nd argument is `0` or omitted. Remember that `size()` and `total_size()` returns `0` in such a case.
 
@@ -179,9 +179,9 @@ int build(std::size_t num_keys,
 
 Note that the key-value pairs must be arranged in key order and the values must not be negative. Also, if there are duplicate keys, only the first pair will be stored in the resultant dictionary.
 
-`progress_func` is a pointer to a callback function. If it is not `NULL`, it will be called in `build()` so that the caller can check the progress of dictionary construction. For details, please see the definition of `<Darts::Details::progress_func_type>`.
+`progress_func` is a pointer to a callback function. If it is not `NULL`, it will be called in `build()` so that the caller can check the progress of dictionary construction. For details, please see the definition of `Darts::Details::progress_func_type`.
 
-The return value of `build()` is `0`, and it indicates the success of the operation. Otherwise, `build()` throws a `<Darts::Exception>`, which is a derived class of `<std::exception>`.
+The return value of `build()` is `0`, and it indicates the success of the operation. Otherwise, `build()` throws a `Darts::Exception`, which is a derived class of `std::exception`.
 
 `build()` uses another construction algorithm if `values` is not `NULL`. In this case, Darts-clone uses a Directed Acyclic Word Graph (DAWG) instead of a trie because a DAWG is likely to be more compact than a trie.
 
@@ -196,7 +196,7 @@ int open(const char *file_name,
 
 `open()` reads an array of units from the specified file. And if it goes well, the old array will be freed and replaced with the new array read from the file. `offset` specifies the number of bytes to be skipped before reading an array. `size` specifies the number of bytes to be read from the file. If the `size` is `0`, the whole file will be read.
 
-open() returns 0 iff the operation succeeds. Otherwise, it returns a non-zero value or throws a <Darts::Exception>. The exception is thrown when and only when a memory allocation fails.
+open() returns 0 iff the operation succeeds. Otherwise, it returns a non-zero value or throws a Darts::Exception. The exception is thrown when and only when a memory allocation fails.
 
 ### Save Dictionary
 
