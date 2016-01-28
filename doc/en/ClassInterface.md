@@ -84,11 +84,11 @@ Disallows copy and assignment.
 }namespace Darts
 ```
 
-## Template Arguments
+### Template Arguments
 
 `DoubleArrayImpl` has 4 template arguments but only the 3rd one is used as the type of values. Note that the given `T` is used only from outside, and the internal value type is not changed from `Darts::Details::value_type`. In `build()`, given values are casted from `T` to `Darts::Details::value_type` by using `static_cast`. On the other hand, values are casted from `Darts::Details::value_type` to `T` in searching dictionaries.
 
-## Types
+### Types
 
 ```cpp
 struct result_pair_type {
@@ -107,9 +107,9 @@ The 1st `set_result()` takes a length as the 3rd argument but it is not used. If
 
 The 2nd `set_result()` uses both `value` and `length`.
 
-## Methods
+### Methods
 
-### Constructor and Desctuctor
+#### Constructor and Desctuctor
 
 ```cpp
 DoubleArray();
@@ -123,7 +123,7 @@ The constructor initializes member variables with `0` and `NULL`s.
 
 The destructor frees memory allocated for units and then initializes member variables with `0` and `NULL`s.
 
-### Set/Get Array
+#### Set/Get Array
 
 ```cpp
 void set_array(const void *ptr,
@@ -140,7 +140,7 @@ const void *array() const;
 
 `array()` returns a pointer to the array of units.
 
-### Free Memory
+#### Free Memory
 
 ```cpp
 void clear();
@@ -148,7 +148,7 @@ void clear();
 
 `clear()` frees memory allocated to units and then initializes member variables with `0` and `NULL`s. Note that `clear()` does not free memory if the array of units was set by `set_array()`. In such a case, `array_` is not `NULL` and `buf_` is `NULL`.
 
-### Get Size
+#### Get Size
 
 ```cpp
 std::size_t unit_size() const;
@@ -165,7 +165,7 @@ std::size_t nonzero_size() const;
 
 `nonzero_size()` exists for compatibility. It always returns the number of units because it takes long time to count the number of non-zero units.
 
-### Build Dictionary
+#### Build Dictionary
 
 ```cpp
 int build(std::size_t num_keys,
@@ -185,7 +185,7 @@ The return value of `build()` is `0`, and it indicates the success of the operat
 
 `build()` uses another construction algorithm if `values` is not `NULL`. In this case, Darts-clone uses a Directed Acyclic Word Graph (DAWG) instead of a trie because a DAWG is likely to be more compact than a trie.
 
-### Load Dictionary
+#### Load Dictionary
 
 ```cpp
 int open(const char *file_name,
@@ -198,7 +198,7 @@ int open(const char *file_name,
 
 open() returns 0 iff the operation succeeds. Otherwise, it returns a non-zero value or throws a Darts::Exception. The exception is thrown when and only when a memory allocation fails.
 
-### Save Dictionary
+#### Save Dictionary
 
 ```cpp
 int save(const char *file_name,
@@ -208,7 +208,7 @@ int save(const char *file_name,
 
 `save()` writes the array of units into the specified file. `offset` specifies the number of bytes to be skipped before writing the array. `open()` returns `0` iff the operation succeeds. Otherwise, it returns a non-zero value.
 
-### Exact Match Search
+#### Exact Match Search
 
 ```cpp
 template <class U>
@@ -229,7 +229,7 @@ U exactMatchSearch(const key_type *key,
 
 The 2nd `exactMatchSearch()` returns a result instead of updating the 2nd argument. So, the following `exactMatchSearch()` has only 3 arguments.
 
-### Prefix Search
+#### Prefix Search
 
 ```cpp
 template <class U>
@@ -251,7 +251,7 @@ value_type traverse(const key_type *key,
 
 In Darts-clone, a dictionary is a deterministic finite-state automaton (DFA) and `traverse()` tests transitions on the DFA. The initial state is `node_pos` and `traverse()` chooses transitions labeled `key[key_pos]`, `key[key_pos + 1]`, ... in order. If there is not a transition labeled `key[key_pos + i]`, `traverse()` terminates the transitions at that state and returns `-2`. Otherwise, `traverse()` ends without a termination and returns `-1` or a nonnegative value, `-1` indicates that the final state was not an accept state. When a nonnegative value is returned, it is the value associated with the final accept state. That is, `traverse()` returns the value associated with the given key if it exists. Note that traverse() updates `node_pos` and `key_pos` after each transition.
 
-### Copy and Assignment
+#### Copy and Assignment
 
 ```cpp
 DoubleArray(const DoubleArray &);
