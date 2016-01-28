@@ -24,7 +24,7 @@ Darts-clone 0.32e or later works as well as Darts.
 
 ## How To
 
-To use Darts-clone, please install Darts-clone and include the Darts-clone's header `#include <darts.h>`. If you don't want to install Darts-clone, please copy `darts.h` to the directory where your C++ source files exist and then include the Darts-clone's header `#include "darts.h"`. Please see also [ClassInterface](https://github.com/s-yata/darts-clone/blob/master/doc/en/ClassInterface.md).
+To use Darts-clone, please install Darts-clone and include the Darts-clone's header `#include <darts.h>`. If you don't want to install Darts-clone, please copy `darts.h` to the directory where your C++ source files exist and then include the Darts-clone's header `#include "darts.h"`. Please see also [Interface](https://github.com/s-yata/darts-clone/blob/master/doc/en/Interface.md).
 
 Note that Darts/Darts-clone dictionary files are not compatible.
 

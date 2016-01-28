@@ -18,6 +18,10 @@ The features of Darts-clone are as follows:
 Due to these features, Darts-clone can achieve better space efficiency
 without degrading the search performance.
 
+* Documentation
+ * [Introduction](https://github.com/s-yata/darts-clone/blob/master/doc/en/Introduction.md)
+ * [Interface](https://github.com/s-yata/darts-clone/blob/master/doc/en/Interface.md)
+
 ----
 
 # Darts-clone: Darts（Double-ARay Trie System）のクローン
@@ -37,3 +41,10 @@ Darts-clone はダブル配列の C++ ヘッダライブラリである Darts �
 
 これらの特徴により， Darts-clone は検索機能や速度を劣化させることなく，
 よりコンパクトな辞書を実現できます．
+
+* ドキュメント
+ * [説明と使い方](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Introduction.md)
+ * [インタフェース](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Interface.md)
+ * [使用方法](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Applications.md)
+ * [性能評価](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Evaluation.md)
+ * [変更履歴](https://github.com/s-yata/darts-clone/blob/master/doc/ja/ChangeLog.md)

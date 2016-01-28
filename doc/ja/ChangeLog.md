@@ -5,14 +5,14 @@
 * 2011/2/13
  * Wiki の [Introduction](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Introduction.md) を更新．
 * 2011/2/12
- * Wiki の [Introduction](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Introduction.md), [ClassInterface](https://github.com/s-yata/darts-clone/blob/master/doc/ja/ClassInterface.md), [Applications](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Applications.md), [Evaluation](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Evaluation.md) を更新．
+ * Wiki の [Introduction](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Introduction.md), [Interface](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Interface.md), [Applications](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Applications.md), [Evaluation](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Evaluation.md) を更新．
 * 2011/2/11
  * darts-clone-0.32g.tar.gz をアップロード．
  * README, COPYING を修正．
  * darts.h のコメントを修正．
  * Wiki の [Introduction](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Introduction.md) を修正．
 * 2010/10/31
- * Wiki の [ClassInterface](https://github.com/s-yata/darts-clone/blob/master/doc/ja/ClassInterface.md), [Introduction](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Introduction.md), [Applications](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Applications.md) を更新．
+ * Wiki の [Interface](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Interface.md), [Introduction](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Introduction.md), [Applications](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Applications.md) を更新．
 * 2010/10/30
  * darts-clone-0.32g-rc1.tar.gz をアップロード．
  * コーディング規約を変更．

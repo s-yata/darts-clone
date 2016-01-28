@@ -17,7 +17,7 @@ Darts-clone 0.32e より前のバージョンでは，登録できるキーの�
 
 Darts-clone を使う方法は，Darts と同じく，インストールしてから `#include <darts.h>` とするだけです．インストールしたくないときは，`darts.h` をコピーして `#include "darts.h"` とするだけでも問題ありません．辞書については，互換性がないので，Darts から Darts-clone への移行に際して再構築が必要になります．
 
-Darts-clone の主要なクラスである `Darts::DoubleArray` の使い方については，[ClassInterface](https://github.com/s-yata/darts-clone/blob/master/doc/ja/ClassInterface.md) を参照してください．
+Darts-clone の主要なクラスである `Darts::DoubleArray` の使い方については，[Interface](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Interface.md) を参照してください．
 
 ### MeCab への組み込み方
 
