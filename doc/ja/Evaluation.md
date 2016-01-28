@@ -62,9 +62,9 @@ Darts-clone による検索が高速な理由としては，辞書が小さく�
 
 no values は，Darts-clone において，すべてのキーに 0 を関連付けたときの実験結果を示しています．no values 以外は，関連付ける値を指定しなかったときの結果を示しています．
 
-* 辞書サイズと構築時間
+* 辞書サイズ `[KB]` と構築時間 `[ns/key]`
 
-|corpus|version|size `[KB]`|build() `[ns/key]`|
+|corpus|version|size|build()|
 |---|---|---:|---:|
 |JA1|Darts   |  7,023|  828|
 ||Darts-clone|  3,336|  368|
@@ -98,7 +98,7 @@ no values は，Darts-clone において，すべてのキーに 0 を関連付�
 
 上述の通り，no values で辞書が小さくなっている理由も DAWG です．DAWG はトライの共通部分木を併合して得られるグラフなので，関連付ける値が同じキーのみを併合することができます．つまり，各キーに値を関連付ける必要がないときや，関連付ける値の種類が少ないときは，Darts-clone を使うことで，辞書のサイズをさらに抑えることができます．
 
-* 検索時間（辞書順）
+* 検索時間（辞書順） `[ns/key]`
 
 |corpus|version|exactMatchSearch()|commonPrefixSearch()|traverse()|
 |---|---|---:|---:|---:|
@@ -124,7 +124,7 @@ no values は，Darts-clone において，すべてのキーに 0 を関連付�
 ||Darts-clone| 24.2| 42.6| 36.2|
 ||no values  | 24.1| 36.2| 35.7|
 
-* 検索時間（ランダム順）
+* 検索時間（ランダム順） `[ns/key]`
 
 |corpus|version|exactMatchSearch()|commonPrefixSearch()|traverse()|
 |---|---|---:|---:|---:|
