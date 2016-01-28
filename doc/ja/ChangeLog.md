@@ -1,6 +1,4 @@
-# 変更履歴
-
-## 変更履歴
+# Darts-clone の変更履歴
 
 * 2011/2/13
  * Wiki の [Introduction](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Introduction.md) を更新．
