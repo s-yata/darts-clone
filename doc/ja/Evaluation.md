@@ -42,7 +42,7 @@ Darts-clone による検索が高速な理由としては，辞書が小さく�
 
 各コーパスの詳細については，以下の URL で確認することができます．
 
-* JA1: http://chasen.aist-nara.ac.jp/chasen/distribution.html.ja
+* JA1: http://chasen.naist.jp/hiki/ChaSen/?茶筌の配布
 * JA2: https://dumps.wikimedia.org/jawiki/
 * JA3: https://googlejapan.blogspot.com/2007/11/n-gram.html
 * EN1: https://wordnet.princeton.edu/
