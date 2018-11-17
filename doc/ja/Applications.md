@@ -15,22 +15,22 @@ Darts-clone を MeCab や ChaSen で利用する方法を紹介します．ま�
 
 ### 組み込み方法
 
-MeCab を Ubuntu 10.10 上でビルドしました．使用したのは mecab-0.98.tar.gz と mecab-ipadic-2.7.0-20070801.tar.gz の組み合わせです．これらのファイルは以下のサイトから入手できます．
+MeCab を Ubuntu 18.04 上でビルドしました．使用したのは mecab-0.996.tar.gz と mecab-ipadic-2.7.0-20070801.tar.gz の組み合わせです．これらのファイルは以下のサイトから入手できます．
 
 * MeCab: Yet Another Part-of-Speech and Morphological Analyzer
-  * http://mecab.sourceforge.net/
+  * https://taku910.github.io/mecab/
 
 アーカイブのダウンロードから辞書を構築するまでの手順は以下の通りです．
 
 1. アーカイブをダウンロードします．
-   * wget http://sourceforge.net/projects/mecab/files/mecab/0.98/mecab-0.98.tar.gz
-   * wget http://sourceforge.net/projects/mecab/files/mecab-ipadic/2.7.0-20070801/mecab-ipadic-2.7.0-20070801.tar.gz
-2. mecab-0.98 の `darts.h` を差し替えます．
-   * wget http://darts-clone.googlecode.com/svn/trunk/include/darts.h
-   * tar zxf mecab-0.98.tar.gz
-   * mv -f darts.h mecab-0.98/src/
-3. mecab-0.98 をビルド・インストールします．
-   * cd mecab-0.98
+   * wget -O mecab-0.996.tar.gz 'https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7cENtOXlicTFaRUE'
+   * wget -O mecab-ipadic-2.7.0-20070801.tar.gz 'https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7MWVlSDBCSXZMTXM'
+2. mecab-0.996 の `darts.h` を差し替えます．
+   * wget 'https://raw.githubusercontent.com/s-yata/darts-clone/master/include/darts.h'
+   * tar zxf mecab-0.996.tar.gz
+   * mv -f darts.h mecab-0.996/src/darts.h
+3. mecab-0.996 をビルド・インストールします．
+   * cd mecab-0.996
    * ./configure
      * 用いる文字コードが utf-8 のみであれば，--enable-utf8-only をオプションとして与えます．
    * make
