@@ -7,7 +7,7 @@
 Darts-clone は Darts（Double-ARray Trie System）というライブラリのクローンです．どちらもダブル配列の実装になっていますが，Darts-clone では，ダブル配列の要素を半分のサイズに押さえたことにより，辞書のサイズも半減しています．また，Darts がトライをダブル配列で実現しているのに対し，Darts-clone は DAWG（Directed Acyclic Word Graph）をダブル配列で実現しているため，キーに関連付ける値に重複が多ければ，より少ない要素で辞書を構成することができます．これらの変更によるオーバーヘッドは小さいので，検索の機能や速度を落とすことなく，辞書を小さくすることができます．
 
 * Darts: Double-ARray Trie System
- * http://chasen.org/~taku/software/darts/
+  * http://chasen.org/~taku/software/darts/
 
 ### 注意事項
 

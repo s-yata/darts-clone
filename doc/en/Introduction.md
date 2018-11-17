@@ -7,14 +7,14 @@
 Darts-clone is a clone of Darts (Double-ARray Trie System). Both are implementations of double-array structure, but Darts-clone makes dictionaries more compact. This advantage is due to the following improved features.
 
 * Half-size units
- * While Darts allocates 8 bytes to each unit, Darts-clone allocates only 4 bytes to each unit. This feature simply halves the size of dictionaries.
+  * While Darts allocates 8 bytes to each unit, Darts-clone allocates only 4 bytes to each unit. This feature simply halves the size of dictionaries.
 * More sophisticated structure
- * While Darts uses a trie to implement a dictionary, Darts-clone uses a Directed Acyclic Word Graph (DAWG), which is derived from a trie by merging its common subtrees. Darts-clone thus requires less units than Darts if a given keyset contains many duplicate values.
+  * While Darts uses a trie to implement a dictionary, Darts-clone uses a Directed Acyclic Word Graph (DAWG), which is derived from a trie by merging its common subtrees. Darts-clone thus requires less units than Darts if a given keyset contains many duplicate values.
 
 These features enable Darts-clone to build more compact dictionaries without degrading search performance.
 
 * Darts: Double-ARray Trie System
- * http://chasen.org/~taku/software/darts/
+  * http://chasen.org/~taku/software/darts/
 
 ### Notes
 
