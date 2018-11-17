@@ -35,7 +35,6 @@ MeCab を Ubuntu 18.04 上でビルドしました．使用したのは mecab-0.
      * 用いる文字コードが utf-8 のみであれば，--enable-utf8-only をオプションとして与えます．
    * make
    * make check
-     * Darts-clone への差し替えに関係なく失敗しました．以前は 64-bit 環境のみ失敗していたような気がするのですが，32-bit 環境でも失敗しました．少し気になりますが，失敗しているのは run-cost-train.sh なので，とりあえず次に進みます．
    * sudo make install
    * cd ..
 4. 共有ライブラリをシステムに認識させます．
@@ -72,29 +71,30 @@ MeCab を Ubuntu 18.04 上でビルドしました．使用したのは mecab-0.
 
 ### 組み込み方法
 
-ChaSen を Ubuntu 10.10 にインストールしました．使用したのは chasen-2.4.4.tar.gz と ipadic-2.7.0.tar.gz の組み合わせです．これらのファイルは以下のサイトから入手できます．
+ChaSen を Ubuntu 18.04 にインストールしました．使用したのは chasen-2.4.5.tar.gz と ipadic-2.7.0.tar.gz の組み合わせです．これらのファイルは以下のサイトから入手できます．
 
-* ChaSen legacy プロジェクト日本語トップページ - SourceForge.JP
-  * http://sourceforge.jp/projects/chasen-legacy/
-* IPAdic legacy プロジェクト日本語トップページ - SourceForge.JP
-  * http://sourceforge.jp/projects/ipadic/
+* chasen legacy -- an old morphological analyzer
+  * https://chasen-legacy.osdn.jp/
+* IPAdic legacy プロジェクト日本語トップページ - OSDN
+  * https://ja.osdn.net/projects/ipadic/
 
 1. アーカイブをダウンロードします．
    * wget "http://darts-clone.googlecode.com/files/darts-clone-0.32g.tar.gz"
      * Darts であれば "http://chasen.org/~taku/software/darts/src/darts-0.32.tar.gz" になります．
-   * wget "http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Fchasen-legacy%2F32224%2Fchasen-2.4.4.tar.gz" -O chasen-2.4.4.tar.gz
-   * wget "http://sourceforge.jp/frs/redir.php?m=iij&f=%2Fipadic%2F24435%2Fipadic-2.7.0.tar.gz" -O ipadic-2.7.0.tar.gz
-2. darts-clone-0.32g をビルド・インストールします．
-   * tar zxf darts-clone-0.32g.tar.gz
-   * cd darts-clone-0.32g
+   * wget -O chasen-2.4.5.tar.xz 'https://ja.osdn.net/frs/redir.php?m=jaist&f=chasen-legacy%2F56305%2Fchasen-2.4.5.tar.xz'
+   * wget -O ipadic-2.7.0.tar.gz 'http://sourceforge.jp/frs/redir.php?m=iij&f=%2Fipadic%2F24435%2Fipadic-2.7.0.tar.gz'
+2. darts-clone をビルド・インストールします．
+   * git clone 'https://github.com/s-yata/darts-clone.git'
+   * cd darts-clone
+   * autoreconf -i
    * ./configure
    * make
    * make check
    * sudo make install
    * cd ..
-3. chasen-2.4.4 をビルド・インストールします．
-   * tar zxf chasen-2.4.4.tar.gz
-   * cd chasen-2.4.4
+3. chasen-2.4.5 をビルド・インストールします．
+   * tar Jxf chasen-2.4.5.tar.gz
+   * cd chasen-2.4.5
    * ./configure
    * make
    * make check
@@ -110,16 +110,16 @@ ChaSen を Ubuntu 10.10 にインストールしました．使用したのは c
    * make
      * 後は sudo make install でインストールできます．文字コードは euc-jp になります．
 
-文字コードを utf-8 にするときは，以下のサイトが参考になると思います．
+文字コードを utf-8 にするときは，以下のページが参考になると思います．
 
-* 「ChaSen」をUTF-8対応で導入
-  * http://www.crimson-snow.net/hmsvr/centos/memo/chasen_utf8.html
+* ChaSenをUTF-8用にインストール - Qiita
+  * https://qiita.com/noobar/items/39583f54d9a7e4ffe655
 
 ### 辞書サイズの比較
 
 ipadic-2.7.0 から構築される辞書（chadic.da）のサイズは以下のようになりました．
 
-|文字コード|Darts|Darts-clone 0.32g|
+|文字コード|Darts|Darts-clone|
 |---|---:|---:|
 |utf8|8,999,312|4,302,848|
 
