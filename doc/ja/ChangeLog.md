@@ -1,5 +1,7 @@
 # Darts-clone の変更履歴
 
+* 2018/11/17
+  * [Applications](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Applications.md) を更新．
 * 2011/2/13
   * Wiki の [Introduction](https://github.com/s-yata/darts-clone/blob/master/doc/ja/Introduction.md) を更新．
 * 2011/2/12
