@@ -43,12 +43,12 @@ Darts-clone による検索が高速な理由としては，辞書が小さく�
 各コーパスの詳細については，以下の URL で確認することができます．
 
 * JA1: http://chasen.aist-nara.ac.jp/chasen/distribution.html.ja
-* JA2: http://dumps.wikimedia.org/jawiki/
-* JA3: http://googlejapan.blogspot.com/2007/11/n-gram.html
-* EN1: http://wordnet.princeton.edu/
-* EN2: http://dumps.wikimedia.org/enwiki/
-* EN3: http://googleresearch.blogspot.com/2006/08/all-our-n-gram-are-belong-to-you.html
-* DIG: http://www.post.japanpost.jp/zipcode/download.html
+* JA2: https://dumps.wikimedia.org/jawiki/
+* JA3: https://googlejapan.blogspot.com/2007/11/n-gram.html
+* EN1: https://wordnet.princeton.edu/
+* EN2: https://dumps.wikimedia.org/enwiki/
+* EN3: https://googleresearch.blogspot.com/2006/08/all-our-n-gram-are-belong-to-you.html
+* DIG: https://www.post.japanpost.jp/zipcode/download.html
 
 ## 実験結果
 
