@@ -284,11 +284,12 @@ class DoubleArrayImpl {
       std::size_t node_pos = 0) const;
 
   // commonLongestPrefixSearch() searches for the key which matches the longest
-  // prefix of the given string. If `result' is nullptr, the matched key would
-  // be not stored. If `result' is not nullptr, the matched key would be stored
-  // in `result'. If `length' is 0, `key' is handled as a zero-terminated string.
-  // commonLongestPrefixSearch() returns the length of the longest matched prefix
-  // of the given string. `node_pos' works as well as in exactMatchSearch().
+  // prefix of the given string. If `result' is nullptr, the matched key will
+  // not be stored. If `result' is not nullptr, the matched key will be stored
+  // in `result'. If `length' is 0, `key' is handled as a zero-terminated
+  // string. commonLongestPrefixSearch() returns the length of the longest
+  // matched prefix of the given string. `node_pos' works as well as in
+  // exactMatchSearch().
   template <class U>
   inline std::size_t commonLongestPrefixSearch(const key_type *key, U *result,
       std::size_t length = 0, std::size_t node_pos = 0) const;
