@@ -9,7 +9,6 @@ darts_benchmark_SOURCES = darts-benchmark.cc
 EXTRA_HEADERS = \
 	timer.h \
 	lexicon.h \
-	mersenne-twister.h \
 	mkdarts-config.h \
 	darts-config.h \
 	benchmark-config.h
