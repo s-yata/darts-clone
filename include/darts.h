@@ -283,6 +283,17 @@ class DoubleArrayImpl {
       std::size_t max_num_results, std::size_t length = 0,
       std::size_t node_pos = 0) const;
 
+  // commonLongestPrefixSearch() searches for the key which matches the longest
+  // prefix of the given string. If `result' is nullptr, the matched key will
+  // not be stored. If `result' is not nullptr, the matched key will be stored
+  // in `result'. If `length' is 0, `key' is handled as a zero-terminated
+  // string. commonLongestPrefixSearch() returns the length of the longest
+  // matched prefix of the given string. `node_pos' works as well as in
+  // exactMatchSearch().
+  template <class U>
+  inline std::size_t commonLongestPrefixSearch(const key_type *key, U *result,
+      std::size_t length = 0, std::size_t node_pos = 0) const;
+
   // In Darts-clone, a dictionary is a deterministic finite-state automaton
   // (DFA) and traverse() tests transitions on the DFA. The initial state is
   // `node_pos' and traverse() chooses transitions labeled key[key_pos],
@@ -515,6 +526,54 @@ inline std::size_t DoubleArrayImpl<A, B, T, C>::commonPrefixSearch(
   }
 
   return num_results;
+}
+
+template <typename A, typename B, typename T, typename C>
+template <typename U>
+inline std::size_t DoubleArrayImpl<A, B, T, C>::commonLongestPrefixSearch(
+    const key_type *key, U *result, std::size_t length,
+    std::size_t node_pos) const {
+  std::size_t max_length = 0;
+
+  unit_type unit = array_[node_pos];
+  node_pos ^= unit.offset();
+  if (length != 0) {
+    for (std::size_t i = 0; i < length; ++i) {
+      node_pos ^= static_cast<uchar_type>(key[i]);
+      unit = array_[node_pos];
+      if (unit.label() != static_cast<uchar_type>(key[i])) {
+        return max_length;
+      }
+
+      node_pos ^= unit.offset();
+      if (unit.has_leaf()) {
+        if (result != nullptr) {
+          set_result(&result[0], static_cast<value_type>(
+              array_[node_pos].value()), i + 1);
+        }
+        max_length = i + 1;
+      }
+    }
+  } else {
+    for ( ; key[length] != '\0'; ++length) {
+      node_pos ^= static_cast<uchar_type>(key[length]);
+      unit = array_[node_pos];
+      if (unit.label() != static_cast<uchar_type>(key[length])) {
+        return max_length;
+      }
+
+      node_pos ^= unit.offset();
+      if (unit.has_leaf()) {
+        if (result != nullptr) {
+          set_result(&result[0], static_cast<value_type>(
+              array_[node_pos].value()), length + 1);  
+        }
+        max_length = length + 1;
+      }
+    }
+  }
+
+  return max_length;
 }
 
 template <typename A, typename B, typename T, typename C>
