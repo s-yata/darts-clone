@@ -7,9 +7,8 @@
 #include <ctime>
 #include <iostream>
 #include <limits>
+#include <random>
 #include <vector>
-
-#include "./mersenne-twister.h"
 
 namespace Darts {
 
@@ -58,9 +57,9 @@ class Lexicon {
   }
   // randomize() shuffles keys. Values are not affected.
   void randomize() {
-    Darts::MersenneTwister mt(
-        static_cast<Darts::MersenneTwister::int_type>(std::time(NULL)));
-    std::random_shuffle(keys_.begin(), keys_.end(), mt);
+    std::random_device seed_gen;
+    std::mt19937 engine(seed_gen());
+    std::shuffle(keys_.begin(), keys_.end(), engine);
   }
 
   void split();
