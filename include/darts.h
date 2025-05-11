@@ -555,7 +555,7 @@ inline U DoubleArrayImpl<A, B, T, C>::commonLongestPrefixSearch(
 
       node_pos ^= unit.offset();
       if (unit.has_leaf()) {
-        set_result(&result[0], static_cast<value_type>(
+        set_result(&result, static_cast<value_type>(
             array_[node_pos].value()), i + 1);
       }
     }
@@ -569,7 +569,7 @@ inline U DoubleArrayImpl<A, B, T, C>::commonLongestPrefixSearch(
 
       node_pos ^= unit.offset();
       if (unit.has_leaf()) {
-        set_result(&result[0], static_cast<value_type>(
+        set_result(&result, static_cast<value_type>(
             array_[node_pos].value()), length + 1);
       }
     }
