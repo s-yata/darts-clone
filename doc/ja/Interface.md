@@ -257,6 +257,8 @@ std::size_t commonPrefixSearch(const key_type *key,
 
 返り値は検索条件にマッチするキーの数になります．検索条件にマッチするキーの数が `max_num_results` より大きいときは，`max_num_results` 番目までが `results` に格納され，返り値は `max_num_results` より大きな値になります．
 
+### ダブル配列の探索
+
 ```cpp
 value_type traverse(const key_type *key,
                     std::size_t &node_pos,
