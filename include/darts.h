@@ -298,8 +298,8 @@ class DoubleArrayImpl {
   // the 2nd argument. So, the following commonLongestPrefixSearch() has only
   // 3 arguments.
   template <class U>
-  inline U commonLongestPrefixSearch(const key_type *key, std::size_t length = 0,
-      std::size_t node_pos = 0) const;
+  inline U commonLongestPrefixSearch(const key_type *key,
+      std::size_t length = 0, std::size_t node_pos = 0) const;
 
   // In Darts-clone, a dictionary is a deterministic finite-state automaton
   // (DFA) and traverse() tests transitions on the DFA. The initial state is
