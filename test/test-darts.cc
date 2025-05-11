@@ -137,6 +137,67 @@ void test_common_prefix_search(const T &dic,
 }
 
 template <typename T>
+void test_common_longest_prefix_search(const T &dic,
+    const std::vector<const char *> &keys,
+    const std::vector<std::size_t> &lengths,
+    const std::vector<typename T::value_type> &values,
+    const std::set<std::string> &invalid_keys) {
+  static const std::size_t MAX_NUM_RESULTS = 16;
+  typename T::value_type value;
+  typename T::result_pair_type result;
+  typename T::result_pair_type result_with_length;
+  typename T::result_pair_type results[MAX_NUM_RESULTS];
+
+  for (std::size_t i = 0; i < keys.size(); ++i) {
+    dic.commonLongestPrefixSearch(keys[i], value);
+    assert(value == values[i]);
+
+    dic.commonLongestPrefixSearch(keys[i], result);
+    assert(result.value == values[i]);
+    assert(result.length == lengths[i]);
+
+    dic.commonLongestPrefixSearch(keys[i], value, lengths[i]);
+    assert(value == values[i]);
+
+    dic.commonLongestPrefixSearch(keys[i], result, lengths[i]);
+    assert(result.value == values[i]);
+    assert(result.length == lengths[i]);
+
+    if (lengths[i] > 1) {
+      std::size_t num_results = dic.commonPrefixSearch(
+          keys[i], results, MAX_NUM_RESULTS);
+      assert(num_results >= 1);
+
+      dic.commonLongestPrefixSearch(keys[i], result, lengths[i] - 1);
+      if (num_results >= 2) {
+        assert(result.value == results[num_results - 2].value);
+        assert(result.length == results[num_results - 2].length);
+      } else {
+        assert(result.value == -1);
+        assert(result.length == 0);
+      }
+    }
+  }
+
+  for (std::set<std::string>::const_iterator it = invalid_keys.begin();
+      it != invalid_keys.end(); ++it) {
+    dic.commonLongestPrefixSearch(it->c_str(), result);
+    if (result.value == -1) {
+      assert(result.length == 0);
+    } else {
+      assert(result.length < it->length());
+    }
+
+    dic.commonLongestPrefixSearch(
+        it->c_str(), result_with_length, it->length());
+    assert(result.value == result_with_length.value);
+    assert(result.length == result_with_length.length);
+  }
+
+  std::cerr << "ok" << std::endl;
+}
+
+template <typename T>
 void test_traverse(const T &dic,
     const std::vector<const char *> &keys,
     const std::vector<std::size_t> &lengths,
@@ -229,6 +290,9 @@ void test_darts(const std::set<std::string> &valid_keys,
 
   std::cerr << "commonPrefixSearch(): ";
   test_common_prefix_search(dic, keys, lengths, values, invalid_keys);
+
+  std::cerr << "commonLongestPrefixSearch(): ";
+  test_common_longest_prefix_search(dic, keys, lengths, values, invalid_keys);
 
   std::cerr << "traverse(): ";
   test_traverse(dic, keys, lengths, values, invalid_keys);
