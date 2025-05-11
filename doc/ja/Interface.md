@@ -70,6 +70,12 @@ class DoubleArray {
                                  std::size_t length = 0,
                                  std::size_t node_pos = 0) const;
 
+  template <class U>
+  void commonLongestPrefixSearch(const key_type *key,
+                                U &result,
+                                std::size_t length = 0,
+                                std::size_t node_pos = 0) const;
+
   value_type traverse(const key_type *key,
                       std::size_t &node_pos,
                       std::size_t &key_pos,
