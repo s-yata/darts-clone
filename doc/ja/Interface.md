@@ -261,10 +261,10 @@ std::size_t commonPrefixSearch(const key_type *key,
 
 ```cpp
 template <class U>
-std::size_t commonLongestPrefixSearch(const key_type *key,
-                                      U &result,
-                                      std::size_t length = 0,
-                                      std::size_t node_pos = 0) const;
+void commonLongestPrefixSearch(const key_type *key,
+                               U &result,
+                               std::size_t length = 0,
+                               std::size_t node_pos = 0) const;
 ```
 
 `commonLongestPrefixSearch()` は入力文字列の前半部分に最長一致するキーを検索します．
