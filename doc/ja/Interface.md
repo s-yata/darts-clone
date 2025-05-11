@@ -257,6 +257,24 @@ std::size_t commonPrefixSearch(const key_type *key,
 
 返り値は検索条件にマッチするキーの数になります．検索条件にマッチするキーの数が `max_num_results` より大きいときは，`max_num_results` 番目までが `results` に格納され，返り値は `max_num_results` より大きな値になります．
 
+#### 文字列の前方部分に最長一致するキーの検索
+
+```cpp
+template <class U>
+std::size_t commonLongestPrefixSearch(const key_type *key,
+                                      U &result,
+                                      std::size_t length = 0,
+                                      std::size_t node_pos = 0) const;
+```
+
+`commonLongestPrefixSearch()` は入力文字列の前半部分に最長一致するキーを検索します．
+
+`key` には入力文字列，`result` には結果を受け取るためのオブジェクト，`length` には入力文字列の長さ，`node_pos` にはダブル配列の探索開始位置を指定するようになっています．`length` が `0` の場合，`key` は NULL 文字（`'\0'`）を終端とする文字列として扱われます．`node_pos` には `traverse()` で取得した探索位置を指定することもできますが，基本的にはダブル配列の初期状態を示す `0` を指定するようになっています．
+
+`result` の型としては，`Darts::DoubleArray::result_type` と `Darts::DoubleArray::result_pair_type` が利用できます．`result_type` を指定すると，キーに関連付けられている値のみが取得できます．`result_pair_type` を指定すると，一致したキーの長さも併せて取得できます．ただし，実際に取得できるのは `node_pos` から状態遷移した回数であり，`node_pos` が `0` でない場合，キーの長さとは一致しません．
+
+一致するキーが登録されていない場合，本来はキーに関連付けられている値が格納されるべきところに，代わりに `-1` が格納されます．
+
 ### ダブル配列の探索
 
 ```cpp
