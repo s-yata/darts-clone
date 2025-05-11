@@ -4,17 +4,21 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <random>
 #include <set>
 #include <string>
 #include <vector>
+
+std::random_device seed_gen;
+std::mt19937 random_engine(seed_gen());
 
 void generate_valid_keys(std::size_t num_keys,
     std::set<std::string> *valid_keys) {
   std::vector<char> key;
   while (valid_keys->size() < num_keys) {
-    key.resize(1 + (std::rand() % 8));
+    key.resize(1 + (random_engine() % 8));
     for (std::size_t i = 0; i < key.size(); ++i) {
-      key[i] = 'A' + (std::rand() % 26);
+      key[i] = 'A' + (random_engine() % 26);
     }
     valid_keys->insert(std::string(&key[0], key.size()));
   }
@@ -25,9 +29,9 @@ void generate_invalid_keys(std::size_t num_keys,
     std::set<std::string> *invalid_keys) {
   std::vector<char> key;
   while (invalid_keys->size() < num_keys) {
-    key.resize(1 + (std::rand() % 8));
+    key.resize(1 + (random_engine() % 8));
     for (std::size_t i = 0; i < key.size(); ++i) {
-      key[i] = 'A' + (std::rand() % 26);
+      key[i] = 'A' + (random_engine() % 26);
     }
     std::string generated_key(&key[0], key.size());
     if (valid_keys.find(generated_key) == valid_keys.end())
@@ -198,7 +202,7 @@ void test_darts(const std::set<std::string> &valid_keys,
   test_dic(dic, keys, lengths, values, invalid_keys);
 
   for (std::size_t i = 0; i < values.size(); ++i) {
-    values[i] = std::rand() % 10;
+    values[i] = random_engine() % 10;
   }
 
   std::cerr << "build() with keys, lengths and random values: ";
@@ -232,8 +236,6 @@ void test_darts(const std::set<std::string> &valid_keys,
 
 int main() {
   try {
-    std::srand(static_cast<unsigned int>(std::time(NULL)));
-
     static const std::size_t NUM_VALID_KEYS = 1 << 16;
     static const std::size_t NUM_INVALID_KEYS = 1 << 17;
 
