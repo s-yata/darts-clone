@@ -328,6 +328,14 @@ class DoubleArrayImpl {
   inline value_type traverse(const key_type *key, std::size_t &node_pos,
       std::size_t &key_pos, std::size_t length = 0) const;
 
+  // validate() performs a sanity check on the loaded array so that a malformed
+  // or untrusted serialized dictionary can be rejected before it is searched,
+  // rather than causing out-of-bounds reads. It verifies that the array is
+  // non-empty, that the root unit is well-formed, and that every unit's offset
+  // (and, when `max_value_limit' is nonnegative, every leaf value) stays within
+  // bounds. Returns true if the array passes all checks.
+  bool validate(value_type max_value_limit = -1) const;
+
  private:
   typedef Details::uchar_type uchar_type;
   typedef Details::id_type id_type;
@@ -464,6 +472,29 @@ int DoubleArrayImpl<A, B, T, C>::save(const char *file_name,
   }
   std::fclose(file);
   return 0;
+}
+
+template <typename A, typename B, typename T, typename C>
+bool DoubleArrayImpl<A, B, T, C>::validate(value_type max_value_limit) const {
+  if (size_ == 0 || array_ == NULL) {
+    return false;
+  }
+  if (array_[0].label() != '\0' || array_[0].has_leaf() ||
+      array_[0].offset() == 0 || ((0 ^ array_[0].offset()) | 0xFF) >= size_) {
+    return false;
+  }
+  for (std::size_t i = 1; i < size_; ++i) {
+    if (array_[i].label() <= 0xFF) {
+      if (((i ^ array_[i].offset()) | 0xFF) >= size_) {
+        return false;
+      }
+    } else if (max_value_limit >= 0) {
+      if (array_[i].value() >= max_value_limit) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
 
 template <typename A, typename B, typename T, typename C>
