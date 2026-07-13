@@ -2,6 +2,7 @@
 #define DARTS_H_
 
 #include <cstdio>
+#include <cstring>
 #include <exception>
 #include <new>
 
@@ -172,6 +173,18 @@ class DoubleArrayImpl {
     clear();
     array_ = static_cast<const unit_type *>(ptr);
     size_ = size;
+  }
+  // copy_array() copies the given array of units into an internally-allocated
+  // buffer that the dictionary owns. Unlike set_array(), which merely aliases
+  // external memory, the dictionary keeps a private copy so the source buffer
+  // may be freed afterwards. `num_bytes' is the size of the source in bytes.
+  void copy_array(const void* ptr, std::size_t num_bytes) {
+    clear();
+    const std::size_t extra_padding = num_bytes % unit_size() == 0 ? 0 : 1;
+    size_ = num_bytes / unit_size() + extra_padding;
+    buf_ = new unit_type[size_];
+    std::memcpy(buf_, ptr, num_bytes);
+    array_ = buf_;
   }
   // array() returns a pointer to the array of units.
   const void *array() const {
